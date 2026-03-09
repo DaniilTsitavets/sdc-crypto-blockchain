@@ -1,30 +1,16 @@
-# Crypto Task1
+# Crypto Task
 
-## Problem
+## How it works
 
-Given three candidate 128-bit symmetric keys, identify the correct one, use it to decrypt an AES-128-CBC message, generate an EC key pair, and produce a digital signature over the plaintext.
+`findKey` decodes each candidate key from hex, computes its SHA-256 hash, and returns the one that matches the target hash.
 
-## Solution
+`decrypt` decodes the ciphertext and IV from hex, creates an AES-128-CBC decrypter with the found key, decrypts in-place, and strips PKCS#7 padding by reading the last byte as pad length.
 
-**Step 1 — Key identification**
-
-Each candidate key is hashed with SHA-256. The result is compared against the provided target hash. The matching key is used in the next step.
-
-**Step 2 — Decryption**
-
-The correct key is used to decrypt the ciphertext with AES-128 in CBC mode using the provided IV. PKCS#7 padding is stripped from the result.
-
-**Step 3 — Key pair generation**
-
-An asymmetric EC key pair is generated using the P-256 curve.
-
-**Step 4 — Digital signature**
-
-The plaintext is hashed with SHA-256 and signed with the private key using ECDSA. The signature consists of two values: `r` and `s`.
+`sign` generates an ephemeral ECDSA key pair on the P-256 curve, hashes the plaintext with SHA-256, and signs the hash. Returns the public key and signature components `r` and `s`.
 
 ## Results
 
-**Symmetric key (hex)**
+**Symmetric key**
 ```
 54684020247570407220244063724074
 ```
@@ -34,7 +20,17 @@ The plaintext is hashed with SHA-256 and signed with the private key using ECDSA
 Hello Blockchain!
 ```
 
-**Public key, signature** — generated at runtime (EC key pair is ephemeral, values differ on each run).
+**Public key (P-256)**
+```
+X: d6ef40578c6aac2b5d0de1517351004e167339fa4f17b8712bfa60b9730b8180
+Y: b6f7dda57068d5c1601ddee2e6b29629f05d5fa26f1541ab098363505d8cb624
+```
+
+**Digital signature (ECDSA)**
+```
+R: fededa8df0d38833767d16c90c21194ce2c27b473a39b032399dc2cc762f11ba
+S: 82b52d9218b24ec2e390d5f7c80b2a52d1626bcf6b856803d3fbabe79840377c
+```
 
 ## Run
 
