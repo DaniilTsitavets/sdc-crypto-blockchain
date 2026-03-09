@@ -39,6 +39,5 @@ Hello Blockchain!
 ## Run
 
 ```bash
-cd task1
 go run main.go
 ```
