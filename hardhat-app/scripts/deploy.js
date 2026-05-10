@@ -1,34 +1,24 @@
-const { ethers, upgrades } = require("hardhat");
+const hre = require("hardhat");
 
 async function main() {
-  const [deployer] = await ethers.getSigners();
-  console.log("Deploying with account:", deployer.address);
-  console.log("Account balance:", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH");
+  const [deployer, owner2, owner3] = await hre.ethers.getSigners();
 
-  const MyTokenV1 = await ethers.getContractFactory("MyTokenV1");
+  const owners = [deployer.address, owner2.address, owner3.address];
+  const required = 2;
 
-  console.log("\nDeploying MyTokenV1 (UUPS proxy)...");
-  const proxy = await upgrades.deployProxy(MyTokenV1, [deployer.address], {
-    initializer: "initialize",
-    kind: "uups",
-  });
+  console.log("Deploying MultiSigWallet...");
+  console.log("Owners:", owners);
+  console.log("Required confirmations:", required);
 
-  await proxy.waitForDeployment();
+  const MultiSigWallet = await hre.ethers.getContractFactory("MultiSigWallet");
+  const wallet = await MultiSigWallet.deploy(owners, required);
+  await wallet.waitForDeployment();
 
-  const proxyAddress = await proxy.getAddress();
-  const implAddress = await upgrades.erc1967.getImplementationAddress(proxyAddress);
-
-  console.log("Proxy address:          ", proxyAddress);
-  console.log("Implementation (V1):    ", implAddress);
-
-  // Save addresses for later scripts
-  const fs = require("fs");
-  const addresses = { proxy: proxyAddress, v1: implAddress };
-  fs.writeFileSync("deployed.json", JSON.stringify(addresses, null, 2));
-  console.log("\nAddresses saved to deployed.json");
+  const address = await wallet.getAddress();
+  console.log("MultiSigWallet deployed to:", address);
 }
 
 main().catch((err) => {
   console.error(err);
-  process.exit(1);
+  process.exitCode = 1;
 });
