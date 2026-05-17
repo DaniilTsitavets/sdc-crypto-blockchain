@@ -1,0 +1,12 @@
+{
+  "name": "Student Visit Card — Daniil Tsitavets",
+  "description": "Soulbound NFT Visit Card issued to a student of the Blockchain Development course. This token is non-transferable and represents the student's unique digital identity.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/visit-card.png",
+  "attributes": [
+    { "trait_type": "studentName", "value": "Daniil Tsitavets" },
+    { "trait_type": "studentID",   "value": "STU-2024-001" },
+    { "trait_type": "course",      "value": "Blockchain Development" },
+    { "trait_type": "year",        "display_type": "number", "value": 2024 },
+    { "trait_type": "type",        "value": "Soulbound" }
+  ]
+}

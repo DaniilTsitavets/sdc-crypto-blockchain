@@ -1,0 +1,11 @@
+{
+  "name": "Light Paladin",
+  "description": "A rare holy warrior blessed with divine light. Balances offense and defense.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/7.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "White" },
+    { "trait_type": "Rarity",  "value": "Rare" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 65 },
+    { "trait_type": "Strength","display_type": "number", "value": 85 }
+  ]
+}

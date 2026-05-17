@@ -1,0 +1,11 @@
+{
+  "name": "Nature Druid",
+  "description": "An uncommon druid in tune with the natural world. Summons vines and beasts to aid in battle.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/9.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Green" },
+    { "trait_type": "Rarity",  "value": "Uncommon" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 55 },
+    { "trait_type": "Strength","display_type": "number", "value": 70 }
+  ]
+}

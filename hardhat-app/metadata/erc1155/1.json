@@ -1,0 +1,11 @@
+{
+  "name": "Ice Mage",
+  "description": "An epic mage who bends ice and frost to freeze enemies in place.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/1.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Blue" },
+    { "trait_type": "Rarity",  "value": "Epic" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 70 },
+    { "trait_type": "Strength","display_type": "number", "value": 90 }
+  ]
+}

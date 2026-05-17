@@ -1,0 +1,11 @@
+{
+  "name": "Dark Sorcerer",
+  "description": "An epic master of forbidden dark magic. Unstable but extraordinarily powerful.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/8.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Purple" },
+    { "trait_type": "Rarity",  "value": "Epic" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 75 },
+    { "trait_type": "Strength","display_type": "number", "value": 88 }
+  ]
+}

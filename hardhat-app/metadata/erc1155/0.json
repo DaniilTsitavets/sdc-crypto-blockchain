@@ -1,0 +1,11 @@
+{
+  "name": "Fire Warrior",
+  "description": "A legendary warrior who controls the power of fire. Deals massive damage but burns everything in his path.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/0.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Red" },
+    { "trait_type": "Rarity",  "value": "Legendary" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 85 },
+    { "trait_type": "Strength","display_type": "number", "value": 95 }
+  ]
+}

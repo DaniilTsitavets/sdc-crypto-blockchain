@@ -1,0 +1,11 @@
+{
+  "name": "Thunder Knight",
+  "description": "A legendary knight clad in crackling lightning armor. A fearsome warrior on the battlefield.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/5.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Yellow" },
+    { "trait_type": "Rarity",  "value": "Legendary" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 80 },
+    { "trait_type": "Strength","display_type": "number", "value": 92 }
+  ]
+}

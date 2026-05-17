@@ -1,29 +1,38 @@
-const { ethers, upgrades } = require("hardhat");
+const { ethers } = require("hardhat");
+const fs = require("fs");
 
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying with account:", deployer.address);
-  console.log("Account balance:", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH");
+  console.log(
+    "Balance:",
+    ethers.formatEther(await ethers.provider.getBalance(deployer.address)),
+    "ETH\n"
+  );
 
-  const MyTokenV1 = await ethers.getContractFactory("MyTokenV1");
+  // ── 1. SoulboundVisitCardERC721 ──────────────────────────────────────────
+  console.log("Deploying SoulboundVisitCardERC721...");
+  const SVC = await ethers.getContractFactory("SoulboundVisitCardERC721");
+  const svc = await SVC.deploy(deployer.address);
+  await svc.waitForDeployment();
+  const svcAddress = await svc.getAddress();
+  console.log("SoulboundVisitCardERC721:", svcAddress);
 
-  console.log("\nDeploying MyTokenV1 (UUPS proxy)...");
-  const proxy = await upgrades.deployProxy(MyTokenV1, [deployer.address], {
-    initializer: "initialize",
-    kind: "uups",
-  });
+  // ── 2. GameCharacterCollectionERC1155 ────────────────────────────────────
+  console.log("\nDeploying GameCharacterCollectionERC1155...");
+  const GCC = await ethers.getContractFactory("GameCharacterCollectionERC1155");
+  const gcc = await GCC.deploy(deployer.address);
+  await gcc.waitForDeployment();
+  const gccAddress = await gcc.getAddress();
+  console.log("GameCharacterCollectionERC1155:", gccAddress);
 
-  await proxy.waitForDeployment();
-
-  const proxyAddress = await proxy.getAddress();
-  const implAddress = await upgrades.erc1967.getImplementationAddress(proxyAddress);
-
-  console.log("Proxy address:          ", proxyAddress);
-  console.log("Implementation (V1):    ", implAddress);
-
-  // Save addresses for later scripts
-  const fs = require("fs");
-  const addresses = { proxy: proxyAddress, v1: implAddress };
+  // ── Save addresses ────────────────────────────────────────────────────────
+  const addresses = {
+    soulboundVisitCard: svcAddress,
+    gameCharacterCollection: gccAddress,
+    deployer: deployer.address,
+    network: (await ethers.provider.getNetwork()).name,
+  };
   fs.writeFileSync("deployed.json", JSON.stringify(addresses, null, 2));
   console.log("\nAddresses saved to deployed.json");
 }

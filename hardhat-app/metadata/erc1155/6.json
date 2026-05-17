@@ -1,0 +1,11 @@
+{
+  "name": "Water Healer",
+  "description": "An uncommon healer who draws power from the ocean to restore allies in battle.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/6.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Cyan" },
+    { "trait_type": "Rarity",  "value": "Uncommon" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 60 },
+    { "trait_type": "Strength","display_type": "number", "value": 55 }
+  ]
+}

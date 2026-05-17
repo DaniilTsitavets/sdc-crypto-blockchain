@@ -1,0 +1,11 @@
+{
+  "name": "Wind Archer",
+  "description": "A rare archer as fast as the wind itself. Strikes from a distance before enemies can react.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/3.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Green" },
+    { "trait_type": "Rarity",  "value": "Rare" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 95 },
+    { "trait_type": "Strength","display_type": "number", "value": 65 }
+  ]
+}

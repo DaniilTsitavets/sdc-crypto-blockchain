@@ -1,0 +1,11 @@
+{
+  "name": "Shadow Rogue",
+  "description": "An epic assassin who moves through shadows undetected. Deadly in close combat.",
+  "image": "ipfs://QmYOUR_IMAGE_CID/4.png",
+  "attributes": [
+    { "trait_type": "Color",    "value": "Black" },
+    { "trait_type": "Rarity",  "value": "Epic" },
+    { "trait_type": "Speed",   "display_type": "number", "value": 90 },
+    { "trait_type": "Strength","display_type": "number", "value": 75 }
+  ]
+}

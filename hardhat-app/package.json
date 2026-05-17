@@ -7,7 +7,6 @@
     "test": "hardhat test",
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.js --network sepolia",
-    "upgrade": "hardhat run scripts/upgrade.js --network sepolia",
     "interact": "hardhat run scripts/interact.js --network sepolia"
   },
   "devDependencies": {
